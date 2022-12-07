@@ -31,34 +31,53 @@ class _LoginPageState extends State<LoginPage> {
                     Container(
                       height: 10,
                     ),
-                    TextField(
-                      onChanged: (text) => () {
-                        email = text;
-                      },
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                          labelText: "Email", border: OutlineInputBorder()),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Card(
+                        child: Column(children: [
+                          TextField(
+                            onChanged: (text) => () {
+                              email = text;
+                            },
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                                labelText: "Email",
+                                border: OutlineInputBorder()),
+                          ),
+                          Container(
+                            height: 10,
+                          ),
+                          TextField(
+                            onChanged: (text) => () {
+                              password = text;
+                            },
+                            obscureText: true,
+                            decoration: InputDecoration(
+                                labelText: "Password",
+                                border: OutlineInputBorder()),
+                          ),
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.red),
+                              onPressed: () {
+                                if (email == "" && password == "") {
+                                  Navigator.of(context)
+                                      .pushReplacementNamed("/home");
+                                } else {
+                                  print("falhou");
+                                }
+                              },
+                              child: Container(
+                                width: double.infinity,
+                                child: Text(
+                                  "Login",
+                                  textAlign: TextAlign.center,
+                                  selectionColor: Colors.white,
+                                ),
+                              ))
+                        ]),
+                      ),
                     ),
-                    Container(
-                      height: 10,
-                    ),
-                    TextField(
-                      onChanged: (text) => () {
-                        password = text;
-                      },
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          labelText: "Password", border: OutlineInputBorder()),
-                    ),
-                    ElevatedButton(
-                        onPressed: () {
-                          if (email == "" && password == "") {
-                            Navigator.of(context).pushReplacementNamed("/home");
-                          } else {
-                            print("falhou");
-                          }
-                        },
-                        child: Text("Login"))
                   ]),
             ),
           ),
