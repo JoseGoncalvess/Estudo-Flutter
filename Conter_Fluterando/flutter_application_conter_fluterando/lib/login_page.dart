@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_conter_fluterando/home_page.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -23,12 +24,6 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 150,
-                      height: 150,
-                      child: Image.network(
-                          'https://upload.wikimedia.org/wikipedia/commons/4/48/EBay_logo.png'),
-                    ),
-                    Container(
                       height: 10,
                     ),
                     Padding(
@@ -40,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
                               email = text;
                             },
                             keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 labelText: "Email",
                                 border: OutlineInputBorder()),
                           ),
@@ -52,22 +47,20 @@ class _LoginPageState extends State<LoginPage> {
                               password = text;
                             },
                             obscureText: true,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 labelText: "Password",
                                 border: OutlineInputBorder()),
                           ),
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.red),
+                                  backgroundColor: Colors.black),
                               onPressed: () {
                                 if (email == "" && password == "") {
                                   Navigator.of(context)
                                       .pushReplacementNamed("/home");
-                                } else {
-                                  print("falhou");
-                                }
+                                } else {}
                               },
-                              child: Container(
+                              child: const SizedBox(
                                 width: double.infinity,
                                 child: Text(
                                   "Login",
@@ -94,7 +87,9 @@ class _LoginPageState extends State<LoginPage> {
         SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: Image.asset('assets/backgrous.jpg', fit: BoxFit.cover),
+          child: Image.network(
+              'https://img.freepik.com/free-photo/grunge-paint-background_1409-1337.jpg?w=2000',
+              fit: BoxFit.cover),
         ),
         Container(
           color: Colors.black.withOpacity(0.3),

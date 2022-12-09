@@ -1,4 +1,4 @@
-name: flutter_application_conter_fluterando
+name: ttinder_clone
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -58,9 +58,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-assets:
-  #- assets/logo.png
-  #- assets/bk.jpg
+  assets:
+    - assets/logo.png
+    -
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
