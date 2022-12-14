@@ -43,7 +43,7 @@ class Keyboard extends StatelessWidget {
             Button(text: '1', cb: cb),
             Button.operation(text: '+', cb: cb)
           ]),
-          SizedBox(
+          const SizedBox(
             height: 1,
           ),
           ButtonRow([
