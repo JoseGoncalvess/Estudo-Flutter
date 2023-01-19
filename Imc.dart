@@ -1,7 +1,19 @@
+import 'dart:io';
+
 main() {
+  print('bem vindo Ao IMC NA CERTA');
+  print('COM VOCe^SE CHAMA?');
+  String? name = stdin.readLineSync();
+  print('Prazer em te conhecer $name');
+  print('$name, ENSIRA SUE PESO!');
+  String? pesoString = stdin.readLineSync();
+  print('$name, ENSIRA SUA ALTURA!');
+  String? alturaString = stdin.readLineSync();
+
+  print('cauculando 99%...');
   //DADOS O CABA
-  double autura = 1.81;
-  double peso = 87;
+  double autura = double.parse(alturaString!);
+  double peso = double.parse(pesoString!);
 //CONTINHA COM SO DADOS
   double imc = peso / (autura * autura);
 
