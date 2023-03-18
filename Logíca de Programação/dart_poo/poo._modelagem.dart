@@ -1,4 +1,4 @@
-import '../Logíca de Programação/Imc_fatored.dart';
+import '../Imc_fatored.dart';
 
 void main() {
   final jose = pessoa(nome: 'Gonçlaves', peso: 87.0, altura: 1.81);
