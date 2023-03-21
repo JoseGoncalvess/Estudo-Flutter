@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Backgroud {
   GetBackgroudColor({required String type}) {
     var color;
-    Color backgroud = Color(0xFFFFFFFF);
+    Color backgroud = Color.fromARGB(255, 110, 109, 109);
     if (type == 'Flay') {
       backgroud = const Color(0xff9EB1D8);
     } else if (type == 'Poison') {
