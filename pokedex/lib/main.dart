@@ -16,32 +16,30 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Poke API'),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({
+    super.key,
+  });
 
-  final String title;
+  final String title = 'Pokedex';
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<PokeModel> list = [];
+  List<Pokemon> allPoker = [];
   String msg = 'VAi aparecer aqui ';
-
-  void _incrementCounter() {
-    getpoke();
-  }
 
   getpoke() {
     PokemonServices().getpokemon().then((value) {
       setState(() {
-        list = value.list;
+        allPoker = value.list;
         msg = value.msg;
       });
     }).catchError((onError) {
@@ -60,30 +58,22 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              msg,
+            SizedBox(
+              child: Text(
+                msg,
+              ),
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: list.length,
+                itemCount: allPoker.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 25,
-                          width: 25,
-                          decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image: NetworkImage(
-                                      'https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/versions/generation-iv/platinum/1.png'))),
-                        ),
-                        ListTile(
-                          title: Text(list[index].name),
-                          subtitle: Text(list[index].url),
-                        )
-                      ],
+                  return ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/${allPoker[index].id.toString()}.png'),
                     ),
+                    title: Text(allPoker[index].name),
+                    subtitle: Text(allPoker[index].height),
                   );
                 },
               ),
@@ -97,5 +87,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ),
     );
+  }
+
+  void _incrementCounter() {
+    getpoke();
   }
 }
