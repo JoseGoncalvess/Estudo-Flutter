@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedexx/model/pokeModel.dart';
+import 'package:pokedexx/pages/page_test.dart';
 import 'package:pokedexx/services/pokemon_services.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const PageTest(),
     );
   }
 }
