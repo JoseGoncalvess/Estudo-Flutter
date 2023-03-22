@@ -23,84 +23,83 @@ class Pokemoncard extends StatefulWidget {
 class _PokemoncardState extends State<Pokemoncard> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      height: MediaQuery.of(context).size.height * 0.28,
-      width: MediaQuery.of(context).size.width,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Container(
-            color: Backgroud().GetBackgroudColor(type: widget.type.toString()),
-            height: MediaQuery.of(context).size.height * 0.25,
-            width: MediaQuery.of(context).size.width,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.25,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: SizedBox(
+    return Column(
+      children: [
+        Container(
+          color: Backgroud().GetBackgroudColor(type: widget.type[0].toString()),
+          height: MediaQuery.of(context).size.height * 0.28,
+          width: MediaQuery.of(context).size.width,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.28,
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(widget.id,
-                                  style: const TextStyle(
-                                      fontSize: 28,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white)),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text(widget.id,
+                                    style: const TextStyle(
+                                        fontSize: 28,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white)),
+                              ),
                               const SizedBox(
                                 height: 10,
                               ),
-                              Text(widget.name,
-                                  style: const TextStyle(
-                                      fontSize: 35,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white)),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text(widget.name,
+                                    style: const TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white)),
+                              ),
                               const SizedBox(
                                 height: 5,
                               ),
                               Container(
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    color: Colors.black26,
-                                  ),
-                                  height: 22,
-                                  width: 55,
-                                  child: Text(
-                                    widget.type[0].toString(),
-                                    style: const TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w400,
-                                        color: Colors.white),
-                                  ))
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  widget.type[0].toString(),
+                                  style: const TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white),
+                                ),
+                              )
                             ],
                           ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                    height: MediaQuery.of(context).size.height * 0.30,
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage(
-                        widget.img,
-                        scale: 0.1,
-                      )),
-                    ))
-              ],
-            ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              Container(
+                  height: MediaQuery.of(context).size.height * 0.28,
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(widget.img, scale: 0.4)),
+                  ))
+            ],
           ),
-        ],
-      ),
+        ),
+        const SizedBox(
+          height: 8,
+        )
+      ],
     );
   }
 }

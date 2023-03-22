@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:pokedexx/model/pokeModel.dart';
@@ -9,6 +10,7 @@ class PokemonServices extends PokedexInterface {
   Future<ReturnApiList> getpokemon() async {
     final dio = Dio();
     List<Pokemon> list = [];
+
     String pokeUrl =
         'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json';
 

@@ -14,12 +14,12 @@ class PokeModel {
   });
 
   List<Pokemon> pokemon;
-
+//convertendo o json obtido da requisição para um modelo do nosso objeto
   factory PokeModel.fromJson(Map<String, dynamic> json) => PokeModel(
         pokemon:
             List<Pokemon>.from(json["pokemon"].map((x) => Pokemon.fromJson(x))),
       );
-
+//A análise de JSON é útil, mas às vezes queremos converter um objeto de modelo de volta para JSON
   Map<String, dynamic> toJson() => {
         "pokemon": List<dynamic>.from(pokemon.map((x) => x.toJson())),
       };
@@ -50,7 +50,8 @@ class Pokemon {
   String num;
   String name;
   String img;
-  List<Type> type;
+  //Mudei aqui era Type
+  List<String> type;
   String height;
   String weight;
   String candy;
@@ -69,7 +70,7 @@ class Pokemon {
         num: json["num"],
         name: json["name"],
         img: json["img"],
-        type: List<Type>.from(json["type"].map((x) => typeValues.map[x]!)),
+        type: (json["type"] as List<dynamic>).map((e) => e as String).toList(),
         height: json["height"],
         weight: json["weight"],
         candy: json["candy"],
