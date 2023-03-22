@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:pokedexx/pages/detailpoker.dart';
 import '../core/widgets/pokemoncard.dart';
 import '../model/pokeModel.dart';
 import '../services/pokemon_services.dart';
@@ -51,6 +52,14 @@ class _HomepageState extends State<Homepage> {
           'Pokedex',
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         )),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.grid_view_sharp,
+                size: 30,
+              ))
+        ],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -70,6 +79,7 @@ class _HomepageState extends State<Homepage> {
                         ),
                       )
                     : Pokemoncard(
+                        onPressed: () {},
                         name: allPoker[index].name,
                         type: allPoker[index].type,
                         id: allPoker[index].id.toString(),
