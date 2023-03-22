@@ -50,8 +50,8 @@ class _PokemoncardState extends State<Pokemoncard> {
                                 alignment: Alignment.centerLeft,
                                 child: Text(widget.id,
                                     style: const TextStyle(
-                                        fontSize: 28,
-                                        fontWeight: FontWeight.w400,
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.w600,
                                         color: Colors.white)),
                               ),
                               const SizedBox(
@@ -61,7 +61,7 @@ class _PokemoncardState extends State<Pokemoncard> {
                                 alignment: Alignment.centerLeft,
                                 child: Text(widget.name,
                                     style: const TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 35,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white)),
                               ),
@@ -70,12 +70,19 @@ class _PokemoncardState extends State<Pokemoncard> {
                               ),
                               Container(
                                 alignment: Alignment.centerLeft,
-                                child: Text(
-                                  widget.type[0].toString(),
-                                  style: const TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white),
+                                child: Container(
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      color: Colors.grey[700]),
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    widget.type[0].toString(),
+                                    style: const TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white),
+                                  ),
                                 ),
                               )
                             ],

@@ -50,7 +50,7 @@ class Pokemon {
   String num;
   String name;
   String img;
-  //Mudei aqui era Type
+  //Mudei aqui era Type PRA STRING
   List<String> type;
   String height;
   String weight;
@@ -70,6 +70,7 @@ class Pokemon {
         num: json["num"],
         name: json["name"],
         img: json["img"],
+        //PEGO O JSON QUE ME RETORNOU ACESSO A LISTA 'TYPE'( CHAVE) ETRANSFORMO EM MAP  FALANDPO O QUE O E E UAM STRIG E DEPOIS TRANSFORMO EM LISTA
         type: (json["type"] as List<dynamic>).map((e) => e as String).toList(),
         height: json["height"],
         weight: json["weight"],

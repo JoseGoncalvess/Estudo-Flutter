@@ -14,7 +14,6 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   List<Pokemon> allPoker = [];
-  List<dynamic> alltipe = [];
   String msg = 'VAi aparecer aqui ';
   bool leading = true;
 
@@ -80,9 +79,9 @@ class _HomepageState extends State<Homepage> {
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        log(allPoker[1].type.map((e) => e).toString());
-      }),
+      // floatingActionButton: FloatingActionButton(onPressed: () {
+      //   log(allPoker[1].type.toString());
+      // }),
     );
   }
 }
