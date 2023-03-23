@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedexx/core/theme/backgroud_color.dart';
 import 'package:pokedexx/model/pokemodel.dart';
-
 import '../../services/pokemon_services.dart';
 
 class Listtype extends StatefulWidget {
@@ -43,15 +42,16 @@ class _ListtypeState extends State<Listtype> {
       padding: const EdgeInsets.all(3.0),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(3)),
+            color: Colors.white.withOpacity(0.3),
+            borderRadius: BorderRadius.circular(3)),
         child: Padding(
-            padding: const EdgeInsets.all(1.0),
+            padding: const EdgeInsets.only(left: 1.0),
             child: Text(
               widget.pokemon,
               style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.02,
+                  fontSize: MediaQuery.of(context).size.width * 0.025,
                   fontWeight: FontWeight.w600,
-                  color: Backgroud().GetBackgroudColor(type: widget.pokemon)),
+                  color: Colors.white),
             )),
       ),
     );

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:pokedexx/core/widgets/pokecardgrid.dart';
 import 'package:pokedexx/pages/detailpoker.dart';
 import '../core/widgets/pokemoncard.dart';
 import '../model/pokeModel.dart';
@@ -17,6 +18,7 @@ class _HomepageState extends State<Homepage> {
   List<Pokemon> allPoker = [];
   String msg = 'VAi aparecer aqui ';
   bool leading = true;
+  bool layout = true;
 
   getpoke() {
     setState(() {
@@ -54,7 +56,11 @@ class _HomepageState extends State<Homepage> {
         )),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  layout = !layout;
+                });
+              },
               icon: const Icon(
                 Icons.grid_view_sharp,
                 size: 30,
@@ -74,34 +80,53 @@ class _HomepageState extends State<Homepage> {
             //         BlendMode.modulate),
             //     fit: BoxFit.cover),
             ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: ListView.builder(
-                itemCount: !leading ? 1 : allPoker.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return !leading
-                      ? SizedBox(
-                          height: MediaQuery.of(context).size.height,
-                          width: MediaQuery.of(context).size.width,
-                          child: Center(
-                            child: CircularProgressIndicator(
-                              color: Colors.red[700],
-                            ),
-                          ),
-                        )
-                      : Pokemoncard(
-                          onPressed: () {},
-                          name: allPoker[index].name,
-                          type: allPoker[index].type,
-                          id: allPoker[index].id.toString(),
-                          img: allPoker[index].img);
-                },
+        child: !layout
+            ? Column(
+                children: [
+                  Expanded(
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 5,
+                      mainAxisSpacing: 5,
+                      children: allPoker
+                          .map((e) => Pokecardgrid(
+                              name: e.name,
+                              type: e.type,
+                              id: e.id.toString(),
+                              img: e.img))
+                          .toList(),
+                    ),
+                  )
+                ],
+              )
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: !leading ? 1 : allPoker.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return !leading
+                            ? SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    color: Colors.red[700],
+                                  ),
+                                ),
+                              )
+                            : Pokemoncard(
+                                onPressed: () {},
+                                name: allPoker[index].name,
+                                type: allPoker[index].type,
+                                id: allPoker[index].id.toString(),
+                                img: allPoker[index].img);
+                      },
+                    ),
+                  )
+                ],
               ),
-            )
-          ],
-        ),
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {
         Navigator.of(context).push(MaterialPageRoute(
