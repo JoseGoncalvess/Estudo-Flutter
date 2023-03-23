@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:pokedexx/core/theme/backgroud_color.dart';
+import 'package:pokedexx/core/widgets/listtype.dart';
 
 class Pokemoncard extends StatefulWidget {
   const Pokemoncard({
@@ -24,44 +25,56 @@ class Pokemoncard extends StatefulWidget {
 class _PokemoncardState extends State<Pokemoncard> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        color: Colors.white,
-        child: Column(
+    return Column(
+      children: [
+        Stack(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                  color: Backgroud()
-                      .GetBackgroudColor(type: widget.type[0].toString()),
-                  borderRadius: BorderRadius.circular(10)),
-              height: MediaQuery.of(context).size.height * 0.28,
-              width: MediaQuery.of(context).size.width * 0.95,
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.90,
+              height: MediaQuery.of(context).size.height * 0.26,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Stack(
                     children: [
-                      SizedBox(
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Backgroud().GetBackgroudColor(
+                                type: widget.type[0].toString()),
+                            borderRadius: BorderRadius.circular(10)),
+                        height: MediaQuery.of(context).size.height * 0.22,
+                        width: MediaQuery.of(context).size.width * 0.90,
+                      ),
+                      Positioned(
+                        left: 120,
+                        child: SizedBox(
+                          child: Opacity(
+                              opacity: 0.3,
+                              child: Image.asset(
+                                'assets/img/pokeBall.png',
+                                scale: 2.0,
+                              )),
+                        ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10)),
                         height: MediaQuery.of(context).size.height * 0.20,
-                        width: MediaQuery.of(context).size.width * 0.4,
+                        width: MediaQuery.of(context).size.width * 0.5,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 8),
+                              padding: const EdgeInsets.only(left: 10),
                               child: Column(
                                 children: [
                                   Container(
                                     alignment: Alignment.centerLeft,
-                                    child: Text(widget.id,
+                                    child: Text('#${widget.id}',
                                         style: TextStyle(
                                             fontSize: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.08,
+                                                0.05,
                                             fontWeight: FontWeight.w600,
                                             color: Colors.white)),
                                   ),
@@ -72,62 +85,90 @@ class _PokemoncardState extends State<Pokemoncard> {
                                     alignment: Alignment.centerLeft,
                                     child: Text(widget.name,
                                         style: TextStyle(
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.06,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white)),
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.08,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        )),
                                   ),
                                   const SizedBox(
                                     height: 5,
                                   ),
                                   Container(
                                     alignment: Alignment.centerLeft,
-                                    child: Container(
-                                      width: 50,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          color: Colors.grey[700]!
-                                              .withOpacity(0.6)),
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        widget.type[0].toString(),
-                                        style: TextStyle(
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.03,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.white),
-                                      ),
+                                    child: Row(
+                                      children: widget.type
+                                          .map((e) => Listtype(pokemon: e))
+                                          .toList(),
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             )
                           ],
                         ),
-                      )
+                      ),
                     ],
-                  ),
-                  Container(
-                      height: MediaQuery.of(context).size.height * 0.28,
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: NetworkImage(widget.img, scale: 0.1)),
-                      ))
+                  )
                 ],
               ),
             ),
-            const SizedBox(
-              height: 8,
-            )
+            Positioned(
+              left: 185,
+              bottom: 25,
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.24,
+                width: MediaQuery.of(context).size.width * 0.45,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(widget.img, scale: 0.8)),
+                ),
+              ),
+            ),
           ],
         ),
-      ),
+      ],
     );
   }
 }
+
+//==cpntainer d ecor do pokemon
+// Container(
+//                   decoration: BoxDecoration(
+//                       color: Backgroud()
+//                           .GetBackgroudColor(type: widget.type[0].toString()),
+//                       borderRadius: BorderRadius.circular(10)),
+//                   height: MediaQuery.of(context).size.height * 0.20,
+//                   width: MediaQuery.of(context).size.width * 0.95,
+//                   child: Stack(children: []),
+//                 )
+
+//pokemon
+
+
+
+//===================poke type============
+// Container(
+//                                     alignment: Alignment.centerLeft,
+//                                     child: Container(
+//                                       width: 50,
+//                                       decoration: BoxDecoration(
+//                                           borderRadius:
+//                                               BorderRadius.circular(5),
+//                                           color: Colors.grey[700]!
+//                                               .withOpacity(0.6)),
+//                                       alignment: Alignment.center,
+//                                       child: Text(
+//                                         widget.type[0].toString(),
+//                                         style: TextStyle(
+//                                             fontSize: MediaQuery.of(context)
+//                                                     .size
+//                                                     .width *
+//                                                 0.03,
+//                                             fontWeight: FontWeight.w400,
+//                                             color: Colors.white),
+//                                       ),
+//                                     ),
+                                  

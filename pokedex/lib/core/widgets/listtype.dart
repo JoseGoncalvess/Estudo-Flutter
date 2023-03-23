@@ -1,19 +1,22 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:pokedexx/core/theme/backgroud_color.dart';
+import 'package:pokedexx/model/pokemodel.dart';
 
 import '../../services/pokemon_services.dart';
 
 class Listtype extends StatefulWidget {
   const Listtype({
     Key? key,
+    required this.pokemon,
   }) : super(key: key);
-
+  final String pokemon;
   @override
   State<Listtype> createState() => _ListtypeState();
 }
 
 class _ListtypeState extends State<Listtype> {
-  List<dynamic> poketipe = [];
+  List<Pokemon> poketipe = [];
   bool leading = true;
   String menssage = '';
   getpoke() {
@@ -22,7 +25,7 @@ class _ListtypeState extends State<Listtype> {
     });
     PokemonServices().getpokemon().then((value) {
       setState(() {
-        poketipe = value.list;
+        poketipe = value.list as List<Pokemon>;
         menssage = value.msg;
 
         setState(() {
@@ -36,25 +39,21 @@ class _ListtypeState extends State<Listtype> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: poketipe.length < 1 ? poketipe.length = 1 : poketipe.length,
-      itemBuilder: (context, index) {
-        return !leading
-            ? Center(
-                child: CircularProgressIndicator(
-                  color: Colors.red[700],
-                ),
-              )
-            : Container(
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Center(
-                  child: Text(poketipe[index]),
-                ),
-              );
-      },
+    return Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(3)),
+        child: Padding(
+            padding: const EdgeInsets.all(1.0),
+            child: Text(
+              widget.pokemon,
+              style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.width * 0.02,
+                  fontWeight: FontWeight.w600,
+                  color: Backgroud().GetBackgroudColor(type: widget.pokemon)),
+            )),
+      ),
     );
   }
 }

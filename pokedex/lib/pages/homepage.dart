@@ -61,37 +61,53 @@ class _HomepageState extends State<Homepage> {
               ))
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            child: ListView.builder(
-              itemCount: !leading ? 1 : allPoker.length,
-              itemBuilder: (BuildContext context, int index) {
-                return !leading
-                    ? SizedBox(
-                        height: MediaQuery.of(context).size.height,
-                        width: MediaQuery.of(context).size.width,
-                        child: Center(
-                          child: CircularProgressIndicator(
-                            color: Colors.red[700],
-                          ),
-                        ),
-                      )
-                    : Pokemoncard(
-                        onPressed: () {},
-                        name: allPoker[index].name,
-                        type: allPoker[index].type,
-                        id: allPoker[index].id.toString(),
-                        img: allPoker[index].img);
-              },
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(color: Colors.white
+            // image: DecorationImage(
+            //     image: const AssetImage(
+            //       'assets/img/BK.jpg',
+            //     ),
+            //     colorFilter: ColorFilter.mode(
+            //         Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
+            //         BlendMode.modulate),
+            //     fit: BoxFit.cover),
             ),
-          )
-        ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: ListView.builder(
+                itemCount: !leading ? 1 : allPoker.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return !leading
+                      ? SizedBox(
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.width,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.red[700],
+                            ),
+                          ),
+                        )
+                      : Pokemoncard(
+                          onPressed: () {},
+                          name: allPoker[index].name,
+                          type: allPoker[index].type,
+                          id: allPoker[index].id.toString(),
+                          img: allPoker[index].img);
+                },
+              ),
+            )
+          ],
+        ),
       ),
-      // floatingActionButton: FloatingActionButton(onPressed: () {
-      //   log(allPoker[1].type.toString());
-      // }),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => const Detailpoker(name: 1),
+        ));
+      }),
     );
   }
 }
