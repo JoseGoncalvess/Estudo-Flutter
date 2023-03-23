@@ -90,10 +90,19 @@ class _HomepageState extends State<Homepage> {
                       mainAxisSpacing: 5,
                       children: allPoker
                           .map((e) => Pokecardgrid(
-                              name: e.name,
-                              type: e.type,
-                              id: e.id.toString(),
-                              img: e.img))
+                                name: e.name,
+                                type: e.type,
+                                id: e.id.toString(),
+                                img: e.img,
+                                onPressed: () {
+                                  // Navigator.of(context).push(MaterialPageRoute(
+                                  //     builder: (context) => Detailpoker(
+                                  //         name: allPoker[e.id].name,
+                                  //         type: allPoker[e.id].type,
+                                  //         id: allPoker[e.id].id.toString(),
+                                  //         img: allPoker[e.id].img)));
+                                },
+                              ))
                           .toList(),
                     ),
                   )
@@ -117,7 +126,15 @@ class _HomepageState extends State<Homepage> {
                                 ),
                               )
                             : Pokemoncard(
-                                onPressed: () {},
+                                onPressed: () {
+                                  log('VAI CARAI ${allPoker[index].id}');
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => Detailpoker(
+                                          name: allPoker[index].name,
+                                          type: allPoker[index].type,
+                                          id: allPoker[index].id.toString(),
+                                          img: allPoker[index].img)));
+                                },
                                 name: allPoker[index].name,
                                 type: allPoker[index].type,
                                 id: allPoker[index].id.toString(),
@@ -128,11 +145,6 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const Detailpoker(name: 1),
-        ));
-      }),
     );
   }
 }

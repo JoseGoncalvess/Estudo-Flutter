@@ -9,6 +9,7 @@ class Pokecardgrid extends StatefulWidget {
     required this.type,
     required this.id,
     required this.img,
+    required this.onPressed,
   });
 
   @override
@@ -17,6 +18,7 @@ class Pokecardgrid extends StatefulWidget {
   final List type;
   final String id;
   final String img;
+  final Function() onPressed;
 }
 
 class _PokecardgridState extends State<Pokecardgrid> {

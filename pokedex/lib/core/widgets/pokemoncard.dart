@@ -10,7 +10,7 @@ class Pokemoncard extends StatefulWidget {
     required this.type,
     required this.id,
     required this.img,
-    required this.onPressed,
+    required this.onPressed(),
   }) : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class Pokemoncard extends StatefulWidget {
   final List type;
   final String id;
   final String img;
-  final Function onPressed;
+  final Function() onPressed;
 }
 
 class _PokemoncardState extends State<Pokemoncard> {
@@ -29,90 +29,97 @@ class _PokemoncardState extends State<Pokemoncard> {
       children: [
         Stack(
           children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.90,
-              height: MediaQuery.of(context).size.height * 0.26,
-              child: Row(
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Backgroud().GetBackgroudColor(
-                                type: widget.type[0].toString()),
-                            borderRadius: BorderRadius.circular(10)),
-                        height: MediaQuery.of(context).size.height * 0.22,
-                        width: MediaQuery.of(context).size.width * 0.90,
-                      ),
-                      Positioned(
-                        left: 120,
-                        child: SizedBox(
-                          child: Opacity(
-                              opacity: 0.3,
-                              child: Image.asset(
-                                'assets/img/pokeBall.png',
-                                scale: 2.0,
-                              )),
+            GestureDetector(
+              onTap: widget.onPressed,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.90,
+                height: MediaQuery.of(context).size.height * 0.26,
+                child: Row(
+                  children: [
+                    Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Backgroud().GetBackgroudColor(
+                                  type: widget.type[0].toString()),
+                              borderRadius: BorderRadius.circular(10)),
+                          height: MediaQuery.of(context).size.height * 0.22,
+                          width: MediaQuery.of(context).size.width * 0.90,
                         ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10)),
-                        height: MediaQuery.of(context).size.height * 0.20,
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text('#${widget.id}',
-                                        style: TextStyle(
+                        Positioned(
+                          left: 120,
+                          child: SizedBox(
+                            child: InkWell(
+                              onTap: widget.onPressed,
+                              child: Opacity(
+                                  opacity: 0.3,
+                                  child: Image.asset(
+                                    'assets/img/pokeBall.png',
+                                    scale: 2.0,
+                                  )),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10)),
+                          height: MediaQuery.of(context).size.height * 0.20,
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text('#${widget.id}',
+                                          style: TextStyle(
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.05,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.black
+                                                  .withOpacity(0.4))),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Container(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(widget.name,
+                                          style: TextStyle(
                                             fontSize: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.05,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white)),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(widget.name,
-                                        style: TextStyle(
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.08,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        )),
-                                  ),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: Row(
-                                      children: widget.type
-                                          .map((e) => Listtype(pokemon: e))
-                                          .toList(),
+                                                0.08,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                          )),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Container(
+                                      alignment: Alignment.centerLeft,
+                                      child: Row(
+                                        children: widget.type
+                                            .map((e) => Listtype(pokemon: e))
+                                            .toList(),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  )
-                ],
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
             Positioned(
