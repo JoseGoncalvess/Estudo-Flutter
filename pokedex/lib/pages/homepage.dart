@@ -52,7 +52,10 @@ class _HomepageState extends State<Homepage> {
         title: const Center(
             child: Text(
           'Pokedex',
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'BebasNEue'),
         )),
         actions: [
           IconButton(

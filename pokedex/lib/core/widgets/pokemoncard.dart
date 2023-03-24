@@ -81,8 +81,9 @@ class _PokemoncardState extends State<Pokemoncard> {
                                                       .width *
                                                   0.05,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.black
-                                                  .withOpacity(0.4))),
+                                              color:
+                                                  Colors.black.withOpacity(0.4),
+                                              fontFamily: 'PatuaOne')),
                                     ),
                                     const SizedBox(
                                       height: 10,
@@ -91,13 +92,13 @@ class _PokemoncardState extends State<Pokemoncard> {
                                       alignment: Alignment.centerLeft,
                                       child: Text(widget.name,
                                           style: TextStyle(
-                                            fontSize: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.08,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white,
-                                          )),
+                                              fontSize: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.08,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                              fontFamily: 'BebasNeue')),
                                     ),
                                     const SizedBox(
                                       height: 5,

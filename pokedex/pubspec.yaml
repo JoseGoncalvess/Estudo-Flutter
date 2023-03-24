@@ -82,8 +82,23 @@ flutter:
   fonts:
     - family: golden-dragon
       fonts:
-        - asset: assets/fonts/golden-dragon/golden-dragon-shadow.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+        - asset: assets/fonts/golden-dragon/golden-dragon-outline.ttf
+
+    - family: BebasNeue
+      fonts:
+        - asset: assets\fonts\Bebas_Neue\BebasNeue-Regular.ttf
+
+    - family: PatuaOne
+      fonts:
+        - asset: assets\fonts\Patua_One\PatuaOne-Regular.ttf
+
+    - family: Nunito
+      fonts:
+        - asset: assets\fonts\Nunito\Nunito-Medium.ttf
+          weight: 700
+        - asset: assets\fonts\Nunito\Nunito-Bold.ttf
+          weight: 900
+        #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

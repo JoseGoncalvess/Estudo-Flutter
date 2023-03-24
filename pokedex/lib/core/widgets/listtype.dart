@@ -50,8 +50,9 @@ class _ListtypeState extends State<Listtype> {
               widget.pokemon,
               style: TextStyle(
                   fontSize: MediaQuery.of(context).size.width * 0.025,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
+                  fontWeight: FontWeight.w900,
+                  color: Colors.white,
+                  fontFamily: 'Nunito'),
             )),
       ),
     );

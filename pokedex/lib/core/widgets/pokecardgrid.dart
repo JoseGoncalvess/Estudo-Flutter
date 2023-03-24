@@ -57,6 +57,7 @@ class _PokecardgridState extends State<Pokecardgrid> {
                               style: TextStyle(
                                 fontSize:
                                     MediaQuery.of(context).size.width * 0.06,
+                                fontFamily: 'BebasNeue',
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               )),
@@ -66,6 +67,7 @@ class _PokecardgridState extends State<Pokecardgrid> {
                               fontSize:
                                   MediaQuery.of(context).size.width * 0.06,
                               fontWeight: FontWeight.w900,
+                              fontFamily: "PatuaOne",
                               color: Colors.black.withOpacity(0.4),
                             ))
                       ],
