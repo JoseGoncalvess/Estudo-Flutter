@@ -126,14 +126,19 @@ class _PokemoncardState extends State<Pokemoncard> {
             Positioned(
               left: 185,
               bottom: 25,
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.24,
-                width: MediaQuery.of(context).size.width * 0.45,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: NetworkImage(widget.img, scale: 0.8)),
-                ),
-              ),
+              child: widget.img == ''
+                  ? Image.asset(
+                      'assets/img/pokeLoad.gif',
+                      scale: 0.3,
+                    )
+                  : Container(
+                      height: MediaQuery.of(context).size.height * 0.24,
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(widget.img, scale: 0.8)),
+                      ),
+                    ),
             ),
           ],
         ),

@@ -43,14 +43,27 @@ class _DetailpokerState extends State<Detailpoker> {
                 child: Stack(
                   children: [
                     Positioned(
-                        left: 70,
-                        top: 8,
-                        child: Text(
-                          widget.name.toUpperCase(),
-                          style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width * 0.15,
-                            color: Colors.white,
-                            fontFamily: 'golden-dragon',
+                        left: 5,
+                        bottom: 200,
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Opacity(
+                                opacity: 0.13,
+                                child: Text(
+                                  widget.name.toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize:
+                                        MediaQuery.of(context).size.width *
+                                            0.15,
+                                    color: Colors.white,
+                                    fontFamily: 'Goldendragon',
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         )),
                     Positioned(
@@ -88,21 +101,27 @@ class _DetailpokerState extends State<Detailpoker> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Image.network(
-                                  widget.img,
-                                  scale: 0.5,
-                                ),
+                                widget.img == ''
+                                    ? Image.asset(
+                                        'assets/img/pokeLoad.gif',
+                                        scale: 0.5,
+                                      )
+                                    : Image.network(
+                                        widget.img,
+                                        scale: 0.5,
+                                      ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(widget.name,
+                                    Text(widget.name.toUpperCase(),
                                         style: TextStyle(
                                             fontSize: MediaQuery.of(context)
                                                     .size
                                                     .width *
                                                 0.08,
                                             fontWeight: FontWeight.bold,
+                                            fontFamily: 'BebasNEue',
                                             color: Colors.white)),
                                     SizedBox(
                                       child: Column(
@@ -123,19 +142,21 @@ class _DetailpokerState extends State<Detailpoker> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Text('Statisticas',
+                              Text('STATUS',
                                   style: TextStyle(
                                       fontSize:
                                           MediaQuery.of(context).size.width *
-                                              0.04,
+                                              0.03,
+                                      fontFamily: 'Nunito',
                                       fontWeight: FontWeight.w800,
                                       color: Colors.white)),
-                              Text('evoluções',
+                              Text('EVOLUÇÕES',
                                   style: TextStyle(
                                       fontSize:
                                           MediaQuery.of(context).size.width *
-                                              0.04,
+                                              0.03,
                                       fontWeight: FontWeight.w800,
+                                      fontFamily: 'Nunito',
                                       color: Colors.white))
                             ],
                           ),
@@ -149,7 +170,12 @@ class _DetailpokerState extends State<Detailpoker> {
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.55,
                   width: MediaQuery.of(context).size.width,
-                  decoration: const BoxDecoration(),
+                  child: Container(
+                    color: Colors.red,
+                    child: Column(
+                      children: [],
+                    ),
+                  ),
                 ),
               )
             ],

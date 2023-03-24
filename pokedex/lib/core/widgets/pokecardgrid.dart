@@ -100,12 +100,17 @@ class _PokecardgridState extends State<Pokecardgrid> {
                 ),
               ),
               Positioned(
-                left: 27,
-                top: 68,
-                child: Image.network(
-                  widget.img,
-                  scale: 1.0,
-                ),
+                left: 28,
+                top: 70,
+                child: widget.img == ''
+                    ? Image.asset(
+                        'assets/img/pokeLoad.gif',
+                        scale: 0.5,
+                      )
+                    : Image.network(
+                        widget.img,
+                        scale: 1.0,
+                      ),
               ),
             ],
           ),
