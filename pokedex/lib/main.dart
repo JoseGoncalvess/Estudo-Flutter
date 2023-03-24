@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokedexx/pages/homepage.dart';
 import 'package:pokedexx/pages/splashpage.dart';
 
 void main() {

@@ -36,7 +36,7 @@ class _SplashpageState extends State<Splashpage> {
         padding: const EdgeInsets.all(10),
         child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.6,
-          child: Image.asset('assets/img/logo.png'),
+          child: Image.asset('assets/img/splash.gif'),
         ),
       ),
     );

@@ -61,10 +61,15 @@ class _HomepageState extends State<Homepage> {
                   layout = !layout;
                 });
               },
-              icon: const Icon(
-                Icons.grid_view_sharp,
-                size: 30,
-              ))
+              icon: layout
+                  ? const Icon(
+                      Icons.grid_view_sharp,
+                      size: 30,
+                    )
+                  : const Icon(
+                      Icons.list_rounded,
+                      size: 40,
+                    ))
         ],
       ),
       body: Container(
@@ -95,12 +100,13 @@ class _HomepageState extends State<Homepage> {
                                 id: e.id.toString(),
                                 img: e.img,
                                 onPressed: () {
-                                  // Navigator.of(context).push(MaterialPageRoute(
-                                  //     builder: (context) => Detailpoker(
-                                  //         name: allPoker[e.id].name,
-                                  //         type: allPoker[e.id].type,
-                                  //         id: allPoker[e.id].id.toString(),
-                                  //         img: allPoker[e.id].img)));
+                                  // log(allPoker[e.id - 1].id.toString());
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => Detailpoker(
+                                          name: allPoker[e.id - 1].name,
+                                          type: allPoker[e.id - 1].type,
+                                          id: allPoker[e.id - 1].id.toString(),
+                                          img: allPoker[e.id - 1].img)));
                                 },
                               ))
                           .toList(),
