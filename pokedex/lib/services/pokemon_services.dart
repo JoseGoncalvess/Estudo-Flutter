@@ -29,4 +29,4 @@ class PokemonServices extends PokedexInterface {
 }
 
 // String PokeImg =
-//     "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/versions/generation-iv/platinum/1.png";
+//     https://www.serebii.net/pokemongo/pokemon/${widget.id}.png";

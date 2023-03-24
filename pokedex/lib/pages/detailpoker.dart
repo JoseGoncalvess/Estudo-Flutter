@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedexx/core/theme/backgroud_color.dart';
 import 'package:pokedexx/core/widgets/listtype.dart';
-import 'package:pokedexx/model/pokemodel.dart';
 
 class Detailpoker extends StatefulWidget {
   const Detailpoker({
@@ -41,80 +40,108 @@ class _DetailpokerState extends State<Detailpoker> {
                         bottomRight: Radius.circular(50),
                         bottomLeft: Radius.circular(50)),
                     color: Backgroud().GetBackgroudColor(type: widget.type[0])),
-                child: Column(
+                child: Stack(
                   children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      width: MediaQuery.of(context).size.width,
-                      alignment: Alignment.topLeft,
-                      child: IconButton(
-                          onPressed: () {
-                            Navigator.of(context).pop(context);
-                          },
-                          icon: const Icon(
-                            Icons.arrow_back_ios_rounded,
-                            size: 25,
+                    Positioned(
+                        left: 70,
+                        top: 8,
+                        child: Text(
+                          widget.name.toUpperCase(),
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * 0.15,
                             color: Colors.white,
-                          )),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.30,
-                      width: MediaQuery.of(context).size.width,
-                      child: SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.20,
-                        width: MediaQuery.of(context).size.width,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.network(
-                              widget.img,
-                              scale: 0.5,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            fontFamily: 'golden-dragon',
+                          ),
+                        )),
+                    Positioned(
+                        bottom: 15,
+                        left: 300,
+                        child: Opacity(
+                          opacity: 0.3,
+                          child: Image.asset(
+                            'assets/img/bolhas.png',
+                            scale: 1.8,
+                          ),
+                        )),
+                    Column(
+                      children: [
+                        Container(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          width: MediaQuery.of(context).size.width,
+                          alignment: Alignment.topLeft,
+                          child: IconButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(context);
+                              },
+                              icon: const Icon(
+                                Icons.arrow_back_ios_rounded,
+                                size: 25,
+                                color: Colors.white,
+                              )),
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.30,
+                          width: MediaQuery.of(context).size.width,
+                          child: SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.20,
+                            width: MediaQuery.of(context).size.width,
+                            child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(widget.name,
-                                    style: TextStyle(
-                                        fontSize:
-                                            MediaQuery.of(context).size.width *
+                                Image.network(
+                                  widget.img,
+                                  scale: 0.5,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(widget.name,
+                                        style: TextStyle(
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
                                                 0.08,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white)),
-                                SizedBox(
-                                  child: Column(
-                                    children: widget.type
-                                        .map((e) => Listtype(pokemon: e))
-                                        .toList(),
-                                  ),
-                                )
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white)),
+                                    SizedBox(
+                                      child: Column(
+                                        children: widget.type
+                                            .map((e) => Listtype(pokemon: e))
+                                            .toList(),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                          width: MediaQuery.of(context).size.width,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text('Statisticas',
+                                  style: TextStyle(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.04,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.white)),
+                              Text('evoluções',
+                                  style: TextStyle(
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.04,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.white))
+                            ],
+                          ),
+                        )
+                      ],
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      width: MediaQuery.of(context).size.width,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text('Statisticas',
-                              style: TextStyle(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width * 0.04,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.white)),
-                          Text('evoluções',
-                              style: TextStyle(
-                                  fontSize:
-                                      MediaQuery.of(context).size.width * 0.04,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.white))
-                        ],
-                      ),
-                    )
                   ],
                 ),
               ),
