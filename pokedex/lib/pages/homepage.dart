@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:pokedexx/core/widgets/pokecardgrid.dart';
+import 'package:pokedexx/model/pokemon_model_v2.dart';
 import 'package:pokedexx/pages/detailpoker.dart';
 import '../core/widgets/pokemoncard.dart';
 import '../model/pokeModel.dart';
@@ -16,6 +17,7 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   List<Pokemon> allPoker = [];
+  List<PokemonV2> pokemonv2 = [];
   String msg = 'VAi aparecer aqui ';
   bool leading = true;
   bool layout = true;

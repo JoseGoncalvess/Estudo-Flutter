@@ -4,7 +4,7 @@ import 'package:pokedexx/model/pokeModel.dart';
 abstract class PokedexInterface {
   //metodo que pegar todos os pokemon
   Future<ReturnApiList> getpokemon();
-  // Future<ReturnApiList> gettypepokemon();
+  Future<ReturnApiList> gettypepokemoninfo(int id);
 }
 
 class ReturnApiList {

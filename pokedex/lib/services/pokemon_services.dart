@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:pokedexx/core/widgets/pokemoncard.dart';
 import 'package:pokedexx/model/pokeModel.dart';
+import 'package:pokedexx/model/pokemon_model_v2.dart';
 import 'package:pokedexx/services/pokedex_interface.dart.dart';
 
 class PokemonServices extends PokedexInterface {
@@ -25,6 +27,23 @@ class PokemonServices extends PokedexInterface {
     }
 
     return ReturnApiList(list: list, msg: 'Não obtive os dados');
+  }
+
+  @override
+  Future<ReturnApiList> gettypepokemoninfo(int id) async {
+    final dio = Dio();
+    List<PokemonV2> list = [];
+
+    String baseUrl = 'https://pokeapi.co/api/v2/pokemon/${id}';
+
+    var response = await dio.get(baseUrl);
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.data) as Map<String, dynamic>;
+      final listAll = json['pokemon'] as List<dynamic>;
+      list = listAll.map((e) => PokemonV2.fromJson(e)).toList();
+    }
+
+    return ReturnApiList(list: list, msg: 'oloko');
   }
 }
 
