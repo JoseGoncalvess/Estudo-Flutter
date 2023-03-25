@@ -32,20 +32,23 @@ class PokemonServices extends PokedexInterface {
   @override
   Future<ReturnApiList> gettypepokemoninfo(int id) async {
     final dio = Dio();
-    List<PokemonV2> list = [];
+    List<PokemonV2> listinfo = [];
 
     String baseUrl = 'https://pokeapi.co/api/v2/pokemon/${id}';
 
     var response = await dio.get(baseUrl);
     if (response.statusCode == 200) {
-      final json = jsonDecode(response.data) as Map<String, dynamic>;
-      final listAll = json['pokemon'] as List<dynamic>;
-      list = listAll.map((e) => PokemonV2.fromJson(e)).toList();
+      final encondjson = jsonEncode(response.data);
+      final json = jsonDecode(encondjson) as Map<String, dynamic>;
+      final listAll = json["stats"] as List<dynamic>;
+      listinfo = listAll.map((e) => PokemonV2.fromJson(e)).toList();
     }
 
-    return ReturnApiList(list: list, msg: 'oloko');
+    return ReturnApiList(list: [], msg: 'Erro ao buscar informações na api');
   }
 }
 
 // String PokeImg =
 //     https://www.serebii.net/pokemongo/pokemon/${widget.id}.png";
+
+ 
