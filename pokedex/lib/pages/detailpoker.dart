@@ -2,6 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:pokedexx/core/theme/backgroud_color.dart';
 import 'package:pokedexx/core/widgets/listtype.dart';
+import '../core/widgets/poke_stats.dart';
+import '../model/pokemon_model_v2.dart';
+import '../services/pokemon_services.dart';
 
 class Detailpoker extends StatefulWidget {
   const Detailpoker({
@@ -23,6 +26,27 @@ class Detailpoker extends StatefulWidget {
 }
 
 class _DetailpokerState extends State<Detailpoker> {
+  List<Stat> pokemonstat = [];
+  String erroMensseger = '';
+
+  getpokeinfo({required int index}) {
+    PokemonServices().gettypepokemoninfo(index).then((value) {
+      setState(() {
+        pokemonstat = value.list as List<Stat>;
+      });
+    }).catchError((onError) {
+      setState(() {
+        erroMensseger = 'Deu erro aqui $onError';
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    getpokeinfo(index: int.parse(widget.id));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -142,6 +166,7 @@ class _DetailpokerState extends State<Detailpoker> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
+                              Row(),
                               Text('STATUS',
                                   style: TextStyle(
                                       fontSize:
@@ -166,16 +191,38 @@ class _DetailpokerState extends State<Detailpoker> {
                   ],
                 ),
               ),
-              Expanded(
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.55,
-                  width: MediaQuery.of(context).size.width,
-                  child: Container(
-                    color: Colors.red,
-                    child: Column(
-                      children: [],
+              Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.02,
                     ),
-                  ),
+                    Text('Status'.toUpperCase(),
+                        style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * 0.04,
+                            fontWeight: FontWeight.w800,
+                            fontFamily: 'Nunito',
+                            color: const Color.fromARGB(255, 77, 77, 77)))
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                          itemCount: pokemonstat.length,
+                          itemBuilder: (context, index) {
+                            return PokeStats(
+                                types: widget.type,
+                                nameStats: pokemonstat[index].stat.name,
+                                statsPower: pokemonstat[index].baseStat);
+                          }),
+                    )
+                  ],
                 ),
               )
             ],

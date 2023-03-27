@@ -35,7 +35,7 @@ class PokemonServices extends PokedexInterface {
     final dio = Dio();
     List<Stat> listinfo = [];
 
-    String baseUrl = 'https://pokeapi.co/api/v2/pokemon/${id}';
+    String baseUrl = 'https://pokeapi.co/api/v2/pokemon/$id';
 
     var response = await dio.get(baseUrl);
     if (response.statusCode == 200) {

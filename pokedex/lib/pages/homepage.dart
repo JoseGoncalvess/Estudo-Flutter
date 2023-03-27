@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:pokedexx/core/widgets/pokecardgrid.dart';
 import 'package:pokedexx/model/pokemon_model_v2.dart';
 import 'package:pokedexx/pages/detailpoker.dart';
-import 'package:pokedexx/pages/test/page_teste.dart';
 import '../core/widgets/pokemoncard.dart';
 import '../model/pokeModel.dart';
 import '../services/pokemon_services.dart';
@@ -159,13 +158,13 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => PageTeste(),
-            ));
-      }),
+      // floatingActionButton: FloatingActionButton(onPressed: () {
+      //   Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //         builder: (context) => ,
+      //       ));
+      // }),
     );
   }
 }
