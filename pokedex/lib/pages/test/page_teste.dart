@@ -14,13 +14,13 @@ class PageTeste extends StatefulWidget {
 }
 
 class _PageTesteState extends State<PageTeste> {
-  List<PokemonV2> pokemonlist = [];
+  List<Stat> pokemonlist = [];
   String erroMensseger = '';
 
   getpokeinfo() {
     PokemonServices().gettypepokemoninfo(1).then((value) {
       setState(() {
-        // pokemonlist = value.list as List<PokemonV2>;
+        pokemonlist = value.list as List<Stat>;
       });
     }).catchError((onError) {
       setState(() {
@@ -48,7 +48,7 @@ class _PageTesteState extends State<PageTeste> {
         color: Colors.white,
         child: Column(
           children: [
-            Text(pokemonlist.toString() == ''
+            Text(pokemonlist[1].stat.name == ''
                 ? 'vaziu'
                 : pokemonlist.toString()),
             Container(child: Text(erroMensseger))

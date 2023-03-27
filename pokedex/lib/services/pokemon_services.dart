@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:ffi';
 
 import 'package:dio/dio.dart';
 import 'package:pokedexx/core/widgets/pokemoncard.dart';
@@ -26,29 +27,31 @@ class PokemonServices extends PokedexInterface {
       list = listpoke.map((e) => Pokemon.fromJson(e)).toList();
     }
 
-    return ReturnApiList(list: list, msg: 'Não obtive os dados');
+    return ReturnApiList(list: list, msg: 'Não obtive os dados dos pokemons');
   }
 
   @override
   Future<ReturnApiList> gettypepokemoninfo(int id) async {
     final dio = Dio();
-    List<PokemonV2> listinfo = [];
+    List<Stat> listinfo = [];
 
     String baseUrl = 'https://pokeapi.co/api/v2/pokemon/${id}';
 
     var response = await dio.get(baseUrl);
     if (response.statusCode == 200) {
-      final encondjson = jsonEncode(response.data);
-      final json = jsonDecode(encondjson) as Map<String, dynamic>;
-      final listAll = json["stats"] as List<dynamic>;
-      listinfo = listAll.map((e) => PokemonV2.fromJson(e)).toList();
+      List liststatus = response.data['stats'];
+      listinfo = liststatus.map((e) => Stat.fromJson(e)).toList();
+      log(listinfo.toString());
+
+      // listinfo = listAll.map((e) => PokemonV2.fromJson(e)).toList();
+
+      log(listinfo[0].stat.name.toString());
     }
 
-    return ReturnApiList(list: [], msg: 'Erro ao buscar informações na api');
+    return ReturnApiList(
+        list: listinfo, msg: 'Erro ao buscar informações na api');
   }
 }
-
+ 
 // String PokeImg =
 //     https://www.serebii.net/pokemongo/pokemon/${widget.id}.png";
-
- 
