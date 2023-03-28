@@ -7,6 +7,7 @@ import 'package:pokedexx/pages/detailpoker.dart';
 import '../core/widgets/pokemoncard.dart';
 import '../model/pokeModel.dart';
 import '../services/pokemon_services.dart';
+import 'details_page.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -141,12 +142,21 @@ class _HomepageState extends State<Homepage> {
                             : Pokemoncard(
                                 onPressed: () {
                                   log('VAI CARAI ${allPoker[index].id}');
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => Detailpoker(
-                                          name: allPoker[index].name,
-                                          type: allPoker[index].type,
-                                          id: allPoker[index].id.toString(),
-                                          img: allPoker[index].img)));
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                        builder: (context) => DetailsPage(
+                                              img: allPoker[index].img,
+                                              id: allPoker[index].id,
+                                              name: allPoker[index].name,
+                                              types: allPoker[index].type,
+                                            )
+                                        // Detailpoker(
+                                        //     name: allPoker[index].name,
+                                        //     type: allPoker[index].type,
+                                        //     id: allPoker[index].id.toString(),
+                                        //     img: allPoker[index].img),
+                                        ),
+                                  );
                                 },
                                 name: allPoker[index].name,
                                 type: allPoker[index].type,
