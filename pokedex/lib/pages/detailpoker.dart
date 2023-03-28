@@ -63,7 +63,7 @@ class _DetailpokerState extends State<Detailpoker> {
                     borderRadius: const BorderRadius.only(
                         bottomRight: Radius.circular(50),
                         bottomLeft: Radius.circular(50)),
-                    color: Backgroud().GetBackgroudColor(type: widget.type[0])),
+                    color: Backgroud().getBackgroudColor(type: widget.type[0])),
                 child: Stack(
                   children: [
                     Positioned(

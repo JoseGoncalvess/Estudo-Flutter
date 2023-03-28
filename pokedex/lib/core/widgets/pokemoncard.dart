@@ -40,7 +40,7 @@ class _PokemoncardState extends State<Pokemoncard> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                              color: Backgroud().GetBackgroudColor(
+                              color: Backgroud().getBackgroudColor(
                                   type: widget.type[0].toString()),
                               borderRadius: BorderRadius.circular(10)),
                           height: MediaQuery.of(context).size.height * 0.22,
@@ -101,7 +101,7 @@ class _PokemoncardState extends State<Pokemoncard> {
                                               fontFamily: 'BebasNeue')),
                                     ),
                                     const SizedBox(
-                                      height: 5,
+                                      height: 2,
                                     ),
                                     Container(
                                       alignment: Alignment.centerLeft,

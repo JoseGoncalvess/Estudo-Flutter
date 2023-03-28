@@ -5,6 +5,7 @@ abstract class PokedexInterface {
   //metodo que pegar todos os pokemon
   Future<ReturnApiList> getpokemon();
   Future<ReturnApiList> gettypepokemoninfo(int id);
+  Future<ReturnApiList> gettypepokelocalizatio(int id);
 }
 
 class ReturnApiList {

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedexx/core/widgets/pokecardgrid.dart';
 import 'package:pokedexx/model/pokemon_model_v2.dart';
 import 'package:pokedexx/pages/detailpoker.dart';
+import 'package:pokedexx/pages/page.dart';
 import '../core/widgets/pokemoncard.dart';
 import '../model/pokeModel.dart';
 import '../services/pokemon_services.dart';
@@ -145,10 +146,13 @@ class _HomepageState extends State<Homepage> {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
                                         builder: (context) => DetailsPage(
+                                              height: allPoker[index].height,
+                                              width: allPoker[index].weight,
                                               img: allPoker[index].img,
                                               id: allPoker[index].id,
                                               name: allPoker[index].name,
                                               types: allPoker[index].type,
+                                              candy: allPoker[index].candy,
                                             )
                                         // Detailpoker(
                                         //     name: allPoker[index].name,
@@ -168,13 +172,9 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
       ),
-      // floatingActionButton: FloatingActionButton(onPressed: () {
-      //   Navigator.push(
-      //       context,
-      //       MaterialPageRoute(
-      //         builder: (context) => ,
-      //       ));
-      // }),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        PokemonServices().gettypepokelocalizatio(1);
+      }),
     );
   }
 }

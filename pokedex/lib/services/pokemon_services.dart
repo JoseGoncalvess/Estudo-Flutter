@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:pokedexx/core/widgets/pokemoncard.dart';
 import 'package:pokedexx/model/pokeModel.dart';
 import 'package:pokedexx/model/pokemon_model_v2.dart';
+import 'package:pokedexx/model/spaw_pokemon.dart';
 import 'package:pokedexx/services/pokedex_interface.dart.dart';
 
 class PokemonServices extends PokedexInterface {
@@ -50,6 +51,24 @@ class PokemonServices extends PokedexInterface {
 
     return ReturnApiList(
         list: listinfo, msg: 'Erro ao buscar informações na api');
+  }
+
+  @override
+  Future<ReturnApiList> gettypepokelocalizatio(int id) async {
+    final dio = Dio();
+    List<dynamic> localization = [];
+
+    String baseUrl = 'https://pokeapi.co/api/v2/pokemon/$id/encounters';
+    var response = await dio.get(baseUrl);
+
+    if (response.statusCode == 200) {
+      var local = response.data;
+      localization = Spawpokemon.fromJson(local) as List;
+
+      log(localization.toString());
+    }
+
+    return ReturnApiList(list: [], msg: '');
   }
 }
  

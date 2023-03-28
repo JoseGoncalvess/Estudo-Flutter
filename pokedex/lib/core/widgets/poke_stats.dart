@@ -67,7 +67,7 @@ class _PokeStatsState extends State<PokeStats> {
                 child: LinearProgressIndicator(
                     backgroundColor: const Color.fromARGB(209, 150, 148, 148),
                     color: Backgroud()
-                        .GetBackgroudColor(type: widget.types[0].toString()),
+                        .getBackgroudColor(type: widget.types[0].toString()),
                     value: widget.statsPower / 100),
               ),
             )

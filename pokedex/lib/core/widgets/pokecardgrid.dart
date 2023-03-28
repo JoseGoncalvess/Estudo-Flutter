@@ -34,12 +34,12 @@ class _PokecardgridState extends State<Pokecardgrid> {
               boxShadow: [
                 BoxShadow(
                     color: Backgroud()
-                        .GetBackgroudColor(type: widget.type[0].toString()),
+                        .getBackgroudColor(type: widget.type[0].toString()),
                     blurRadius: 3,
                     spreadRadius: 1)
               ],
               color: Backgroud()
-                  .GetBackgroudColor(type: widget.type[0].toString())),
+                  .getBackgroudColor(type: widget.type[0].toString())),
           height: MediaQuery.of(context).size.height * 0.35,
           width: MediaQuery.of(context).size.width * 0.5,
           child: Stack(
